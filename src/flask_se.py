@@ -664,6 +664,12 @@ def summer_school_2022():
     return render_template("summer_school_2022.html", projects=projects)
 
 
+@app.route("/summer_school_2024.html")
+def summer_school_2024():
+    projects = SummerSchool.query.filter_by(year=2024).all()
+    return render_template("summer_school_2024.html", projects=projects)
+
+
 @app.route("/sitemap.xml", methods=["GET"])
 @app.route("/Sitemap.xml", methods=["GET"])
 def sitemap():
