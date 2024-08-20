@@ -412,7 +412,7 @@
                             <div class="mb-5" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                                 <h5 class="h6" itemprop="name">Какие языки программирования будут?</h5>
                                 <span itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                                    <p itemprop="text">Много разных. Надо различать курсы и проекты. На проектах вообще всё может случиться. По учёбе примерно следующее: обязательно будут С, ООП и параллельное программирование на Java/Kotlin и C#. Python для обработки изображений, данных, Машинное обучение (ML). Обязательно будет функциональное программирование, там Haskell, где-то Scala, OCaml, бывает F#.</p>
+                                    <p itemprop="text">Много разных. Надо различать курсы и проекты. На проектах вообще всё может случиться. По учёбе примерно следующее: C, C++, ООП и параллельное программирование на Java/Kotlin и C#. Python для обработки изображений, данных, Машинное обучение (ML). Обязательно будет функциональное программирование, там Haskell, OCaml, бывает F#.</p>
                                 </span>
                             </div>
                         </div>
@@ -450,7 +450,7 @@
                     <div class="card hover-shadow-lg border-0 mb-lg-4 mb-0">
                         <div class="card-body">
                             <div class="media align-items-center">
-                                <img alt="{{person.user}}" src="{{ url_for('static', filename='/assets/img/stuff/' + person.user.avatar_uri) }}" class="avatar rounded-circle avatar-lg mr-4" loading="lazy">
+                                <img alt="{{person.user}}" src="{{ url_for('static', filename='/images/avatars/' + person.user.avatar_uri) }}" class="avatar rounded-circle avatar-lg mr-4" loading="lazy">
                                 <div class="media-body">
                                     <span class="h6">{{person.user}}</span><br>
                                     <span class="h6 text-sm">{{person.position}}{% if person.science_degree %}, {{person.science_degree}} {% endif %} </span>
