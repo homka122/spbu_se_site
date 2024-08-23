@@ -143,6 +143,7 @@ from flask_se_practice_admin import (
     archive_thesis,
 )
 from flask_se_practice_yandex_disk import yandex_code
+from flask_se_summer_schools import (create_summer_school_view, summer_school_list)
 
 app = Flask(
     __name__,
@@ -373,6 +374,12 @@ app.add_url_rule(
     view_func=archive_thesis,
 )
 
+
+# Summer schools
+app.add_url_rule("/summer_school_2021.html", view_func=create_summer_school_view(2021))
+app.add_url_rule("/summer_school_2022.html", view_func=create_summer_school_view(2022))
+app.add_url_rule("/summer_school_2024.html", view_func=create_summer_school_view(2024))
+app.add_url_rule("/summer_school_list.html", view_func=summer_school_list)
 
 # Init Database
 db.app = app
@@ -650,47 +657,6 @@ def frequently_asked_questions():
 @app.route("/nooffer")
 def nooffer():
     return render_template("nooffer.html")
-
-
-@app.route("/summer_school_2021.html")
-def summer_school_2021():
-    projects = SummerSchool.query.filter_by(year=2021).all()
-    return render_template("summer_school_2021.html", projects=projects)
-
-
-@app.route("/summer_school_2022.html")
-def summer_school_2022():
-    projects = SummerSchool.query.filter_by(year=2022).all()
-    return render_template("summer_school_2022.html", projects=projects)
-
-
-@app.route("/summer_school_2024.html")
-def summer_school_2024():
-    projects = SummerSchool.query.filter_by(year=2024).all()
-    return render_template("summer_school_2024.html", projects=projects)
-
-
-@app.route("/summer_school_list.html")
-def summer_school_list():
-    schools = [
-        {
-            "name": "Летняя школа 2021",
-            "description": "Школа проводилась с <strong>12-го июля по 6-е августа</strong>. 12 июля в 12:00 прошло открытие школы и презентация проектов. 6 августа были проведены презентации результатов проектов, подведение итогов и закрытие школы.",
-            "href": "summer_school_2021",
-        },
-        {
-            "name": "Летняя школа 2022",
-            "description": "Школа проводилась с <strong>4 по 30 июля</strong>. 4 июля в 12:00 прошло открытие школы и презентация проектов. 30 июля были проведены презентации результатов проектов, подведение итогов и закрытие школы.",
-            "href": "summer_school_2022",
-        },
-        {
-            "name": "Летняя школа 2024",
-            "description": "Школа проводилась с <strong>8 июля по 3 августа</strong>. 8 июля в 12:00 прошло открытие школы и презентация проектов. 2 августа были проведены презентации результатов проектов, подведение итогов и закрытие школы.",
-            "href": "summer_school_2024",
-        },
-    ]
-
-    return render_template("summer_school_list.html", schools=schools)
 
 
 @app.route("/sitemap.xml", methods=["GET"])

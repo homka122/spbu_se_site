@@ -20,14 +20,14 @@
                 
                 <div class="container">
                     <div class="row row-grid justify-content-between align-items-center">
-                        {% for school in schools %}
+                        {% for school in schools.values() %}
                         <div class="col-lg-12">
                             <a href="{{ url_for(school.href) }}">
                                 <div class="card hover-shadow-lg border-0 mb-lg-4 mb-0">
                                     <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-lg-8">
-                                                <h6 class="mb-0"><strong>{{ school.name }}</strong></h6>
+                                                <h6 class="mb-0"><strong>{{ school.name|safe }}</strong></h6>
                                             </div>
                                         </div>
                                     </div>
