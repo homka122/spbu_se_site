@@ -31,10 +31,10 @@ def create_summer_school_view(year: int):
         return render_template(
             "summer_school.html", projects=projects, school=schools[year]
         )
-    
-    # flask makes function identification by name 
+
+    # flask makes function identification by name
     summer_school.__name__ = "summer_school_" + str(year)
-    
+
     return summer_school
 
 

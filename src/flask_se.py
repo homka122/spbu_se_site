@@ -143,7 +143,7 @@ from flask_se_practice_admin import (
     archive_thesis,
 )
 from flask_se_practice_yandex_disk import yandex_code
-from flask_se_summer_schools import (create_summer_school_view, summer_school_list)
+from flask_se_summer_schools import create_summer_school_view, summer_school_list
 
 app = Flask(
     __name__,
