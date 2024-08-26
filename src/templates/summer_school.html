@@ -1,9 +1,9 @@
 {% extends "base_light.html" %}
-{% block title %}Летняя школа на мат-мехе СПбГУ (2021){% endblock %}
-{% block description %}Летняя проектная онлайн-школа программирования для обучающихся СПбГУ (2021, онлайн). Школа проводилась с 12-го июля по 6-е августа.{% endblock %}
+{% block title %}Летняя школа на мат-мехе СПбГУ (2024){% endblock %}
+{% block description %}Летняя проектная онлайн-школа программирования для обучающихся СПбГУ (2024, онлайн). Школа проводилась с 8 июля по 3 августа 2024 года.{% endblock %}
 
 {% block headers %}
-<link rel="canonical" href="https://se.math.spbu.ru/summer_school.html" />
+<link rel="canonical" href="https://se.math.spbu.ru/{{school.href}}.html" />
 {% endblock %}
 
 {% block content %}
@@ -14,10 +14,11 @@
             <div class="col px-0">
                 <div class="row">
                     <div class="col-lg-9">
+                        <a href="{{ url_for('summer_school_list') }}">Архив описаний прошлых летних школ</a>
                         <!-- Heading -->
-                        <h1 class="h2 mb-2">Летняя проектная онлайн-школа программирования для обучающихся СПбГУ (<strong>2021</strong>, онлайн).</h1>
+                        <h1 class="h2 mb-2">{{ school.full_name|safe }}</h1>
                         <!-- Text -->
-                        <p class="lead">Школа проводилась с <strong>12-го июля по 6-е августа</strong>. 12 июля в 12:00 прошло открытие школы и презентация проектов. 6 августа были проведены презентации результатов проектов, подведение итогов и закрытие школы.</p>
+                        <p class="lead">{{ school.description|safe }}</p>
                     </div>
                 </div>
             </div>
@@ -46,6 +47,13 @@
                         </div>
 
                         <div class="card-body pt-0">
+
+                            {%  if proj.description %}
+
+                            <h6 class="h6 mb-0">Описание</h6>
+                            {{proj.description | safe}}
+                            {% endif %}
+
                             {% if proj.repo %}
                             <h6 class="h6 mb-0">Репозиторий</h6>
                             <p class="text-sm mb-0">{{proj.repo | safe}}</p>
@@ -67,6 +75,7 @@
                 {% endfor %}
             </div>
         </div>
-    </section>
+</section>
+
 
 {% endblock %}
