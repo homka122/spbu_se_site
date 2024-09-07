@@ -6,7 +6,12 @@ from flask import flash, redirect, request, render_template, url_for
 from flask_login import current_user
 
 from flask_se_auth import login_required
-from se_forms import UserAddTheme, UserEditTheme, DiplomaThemesFilter
+from se_forms import (
+    UserAddTheme,
+    UserEditTheme,
+    DiplomaThemesFilter,
+    UserDiplomaThemesFilter,
+)
 from se_models import db, DiplomaThemes, ThemesLevel, Company, Staff, Users
 
 from sqlalchemy import or_
@@ -135,6 +140,10 @@ def fetch_themes():
 
 @login_required
 def user_diplomas_index():
+    filter = UserDiplomaThemesFilter()
+    filter.archived.choices.insert(0, (0, "Нет"))
+    filter.archived.choices.insert(1, (1, "Да"))
+
     user = current_user
     themes = (
         DiplomaThemes.query.filter_by(author_id=user.id)
@@ -146,7 +155,7 @@ def user_diplomas_index():
     if not user_themes_count:
         return redirect(url_for("diplomas_index"))
 
-    return render_template("diplomas/user_themes.html", themes=themes)
+    return render_template("diplomas/user_themes.html", themes=themes, filter=filter)
 
 
 def get_theme():

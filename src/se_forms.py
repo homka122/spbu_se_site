@@ -77,6 +77,10 @@ class DiplomaThemesFilter(FlaskForm):
     supervisor = SelectField("supervisor", choices=[])
 
 
+class UserDiplomaThemesFilter(FlaskForm):
+    archived = SelectField("archived", choices=[])
+
+
 # Thesis review forms
 class ThesisReviewFilter(FlaskForm):
     status = SelectField("status", choices=[])

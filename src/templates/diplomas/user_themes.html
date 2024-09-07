@@ -29,7 +29,7 @@
 
      <section class="slice clients delimiter-top delimiter-bottom bg-section-secondary" id="themes">
         <div class="container">
-            <div class="row row-grid align-items-center">
+            <div class="row row-grid">
                 <div class="col-lg-9 mx-auto" id="ThemesList">
                     {% for t in themes %}
                     <div class="card border-0">
@@ -89,7 +89,24 @@
                         </div>
                     </div>
                     {% endfor %}
-
+                </div>
+                <div class="col-lg-3 ml-lg-auto" id="UserDiplomaThemesFilter">
+                    <div data-toggle="sticky" data-sticky-offset="10">
+                        <div class="card">
+                            <div class="card-header px-3">
+                                <span class="h6 mb-0">Фильтры</span>
+                            </div>
+                            <div class="card-body px-3">
+                                {{ filter.csrf_token }}
+                                <p class="text-sm mb-0">
+                                    Скрыть архивные
+                                </p>
+                                <div class="form-group">
+                                    {{ filter.archived(class_="custom-select pl-3") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

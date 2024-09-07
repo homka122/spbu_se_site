@@ -452,6 +452,25 @@ if (diploma_themes_filter_element){
     diploma_themes_filter();
 }
 
+// user_themes filter
+
+let user_diploma_filter = document.getElementById("UserDiplomaThemesFilter");
+
+if (user_diploma_filter) {
+  let themes_archived_select = document.getElementById("archived");
+
+  user_diploma_filter.onchange = () => {
+    const display_style = themes_archived_select.value == 0 ? 'block' : 'none' 
+
+    const themes = document.querySelectorAll("#ThemesList > div");
+    themes.forEach(theme => {
+        if (theme.querySelector(".badge").innerHTML == "В архиве") {
+            theme.style.display = display_style
+        }
+    })
+  };
+}
+
 //
 // Thesis on review
 //
